@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:Recipe_app/widgets/mealScreen.dart';
 import 'package:flutter/material.dart';
 
 import './widgets/mealScreen.dart';
@@ -31,9 +32,10 @@ class MyApp extends StatelessWidget {
                   fontFamily: 'RobotoCondensed'
                 )
               )),
-      home: CategoryScreen(),
+      // home: CategoryScreen(),
       routes: {
-        '/mealScreen': (context) => MealScreen(),
+        '/':(context) => CategoryScreen(),
+        MealScreen.routeName: (context) => MealScreen(),
       },
     );
   }
