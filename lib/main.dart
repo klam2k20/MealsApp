@@ -1,10 +1,8 @@
-import 'dart:ui';
-
-import 'package:Recipe_app/screens/recipeScreen.dart';
 import 'package:flutter/material.dart';
 
 import 'screens/recipeScreen.dart';
 import 'screens/categoryScreen.dart';
+import 'screens/recipeDetailScreen.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,6 +34,10 @@ class MyApp extends StatelessWidget {
       routes: {
         '/':(context) => CategoryScreen(),
         RecipeScreen.routeName: (context) => RecipeScreen(),
+        RecipeDetailScreen.routeName: (context) => RecipeDetailScreen(),
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (context) => CategoryScreen());
       },
     );
   }

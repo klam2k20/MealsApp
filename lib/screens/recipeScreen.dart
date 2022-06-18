@@ -1,10 +1,10 @@
-import 'package:Recipe_app/widgets/recipeItem.dart';
 import 'package:flutter/material.dart';
 
 import '../dummyData.dart';
+import '../widgets/recipeItem.dart';
 
 class RecipeScreen extends StatelessWidget {
-  static const routeName = '/MealScreen';
+  static const routeName = '/RecipeScreen';
   @override
   Widget build(BuildContext context) {
     //Get args passed in from CategoryItem when selected
@@ -24,6 +24,7 @@ class RecipeScreen extends StatelessWidget {
           itemBuilder: (context, index) {
             final recipe = categoryRecipes[index];
             return RecipeItem(
+                id: recipe.id,
                 title: recipe.title,
                 imageUrl: recipe.imageUrl,
                 duration: recipe.duration,

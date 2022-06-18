@@ -1,17 +1,8 @@
 import 'package:flutter/foundation.dart';
 
-enum Complexity {
-  easy, 
-  medium, 
-  hard
-}
+enum Complexity { easy, medium, hard }
 
-enum Affordability {
-  affordable, 
-  reasonnable, 
-  pricey
-}
-
+enum Affordability { affordable, reasonnable, pricey }
 
 class Recipe {
   final String id;
@@ -29,20 +20,17 @@ class Recipe {
   final bool isVegetarian;
 
   const Recipe(
-    {
-      required this.id, 
-      required this.categories, 
-      required this.title, 
-      required this.imageUrl, 
-      required this.ingredients, 
+      {required this.id,
+      required this.categories,
+      required this.title,
+      required this.imageUrl,
+      required this.ingredients,
       required this.steps,
-      required this.duration, 
-      required this.complexity, 
-      required this.affordability, 
-      required this.isGlutenFree, 
-      required this.isLactoseFree, 
-      required this.isVegan, 
-      required this.isVegetarian
-      }
-      );
+      required this.duration,
+      required this.complexity,
+      required this.affordability,
+      required this.isGlutenFree,
+      required this.isLactoseFree,
+      required this.isVegan,
+      required this.isVegetarian});
 }
