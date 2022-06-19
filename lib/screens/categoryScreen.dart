@@ -7,11 +7,7 @@ class CategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('DeliRecipes'),
-      ),
-      body: GridView(
+    return  GridView(
         padding: const EdgeInsets.all(20),
         gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
             //Min width of a tile
@@ -29,7 +25,6 @@ class CategoryScreen extends StatelessWidget {
             category.bgColor,
           );
         }).toList(),
-      ),
     );
   }
 }
