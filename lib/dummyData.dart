@@ -190,7 +190,7 @@ const dummyRecipes = [
     id: 'm5',
     categories: [
       'c2'
-          'c5',
+      'c5',
       'c10',
     ],
     title: 'Salad with Smoked Salmon',
