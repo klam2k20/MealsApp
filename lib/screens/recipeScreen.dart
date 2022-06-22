@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 
-import '../dummyData.dart';
 import '../widgets/recipeItem.dart';
+import '../models/recipe.dart';
 
 class RecipeScreen extends StatelessWidget {
   static const routeName = '/RecipeScreen';
+  final List<Recipe> _availableRecipes;
+
+  const RecipeScreen(this._availableRecipes);
+
+  
   @override
   Widget build(BuildContext context) {
     //Get args passed in from CategoryItem when selected
@@ -13,7 +18,7 @@ class RecipeScreen extends StatelessWidget {
     final routeArgs = route.settings.arguments as Map<String, String>;
     final categoryTitle = routeArgs['title'];
     final categoryID = routeArgs['id'];
-    final categoryRecipes = dummyRecipes.where((recipe) {
+    final categoryRecipes = _availableRecipes.where((recipe) {
       return recipe.categories.contains(categoryID);
     }).toList();
     return Scaffold(
