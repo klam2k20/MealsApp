@@ -8,6 +8,7 @@ class FiltersScreen extends StatefulWidget {
   final Map<String, bool> _filters;
   final Function _updateFilters;
 
+  // ignore: use_key_in_widget_constructors
   const FiltersScreen(this._filters, this._updateFilters);
 
   @override

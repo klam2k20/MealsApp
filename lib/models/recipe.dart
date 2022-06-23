@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 enum Complexity { easy, medium, hard }
 
 enum Affordability { affordable, reasonnable, pricey }

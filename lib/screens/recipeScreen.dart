@@ -7,6 +7,7 @@ class RecipeScreen extends StatelessWidget {
   static const routeName = '/RecipeScreen';
   final List<Recipe> _availableRecipes;
 
+  // ignore: use_key_in_widget_constructors
   const RecipeScreen(this._availableRecipes);
 
   
@@ -14,7 +15,7 @@ class RecipeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //Get args passed in from CategoryItem when selected
     final route = ModalRoute.of(context);
-    if (route == null) return SizedBox.shrink();
+    if (route == null) return const SizedBox.shrink();
     final routeArgs = route.settings.arguments as Map<String, String>;
     final categoryTitle = routeArgs['title'];
     final categoryID = routeArgs['id'];

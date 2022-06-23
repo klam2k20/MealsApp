@@ -6,6 +6,7 @@ import './screens/categoryScreen.dart';
 import './screens/recipeDetailScreen.dart';
 import './screens/filtersScreen.dart';
 import './dummyData.dart';
+import './models/recipe.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,6 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _availableRecipes = dummyRecipes;
+  List<Recipe> _favoriteRecipes = [];
   Map<String, bool> _filters = {
     'gluten': false,
     'lactose': false,
@@ -46,6 +48,25 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _toggleFavoriteRecipe(String recipeID) {
+    final recipeIndex = _favoriteRecipes.indexWhere((recipe) => recipe.id == recipeID);
+    if(recipeIndex == -1) {
+      setState(() {
+        final recipe = dummyRecipes.firstWhere((recipe) => recipe.id == recipeID);
+        _favoriteRecipes.add(recipe);
+      });
+    }
+    else {
+      setState(() {
+        _favoriteRecipes.removeAt(recipeIndex);
+      });
+    }
+  }
+
+  bool _isFavorite(String recipeID) {
+    return _favoriteRecipes.any((recipe) => recipe.id == recipeID);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -53,7 +74,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
           primarySwatch: Colors.pink,
           accentColor: Colors.amber,
-          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          canvasColor: const Color.fromARGB(255, 240, 236, 142),
           fontFamily: 'Raleway',
           textTheme: ThemeData.light().textTheme.copyWith(
               bodyText1: const TextStyle(
@@ -66,9 +87,9 @@ class _MyAppState extends State<MyApp> {
                   fontSize: 20, fontFamily: 'RobotoCondensed'))),
       // home: CategoryScreen(),
       routes: {
-        '/': (context) => TabsScreen(),
+        '/': (context) => TabsScreen(_favoriteRecipes),
         RecipeScreen.routeName: (context) => RecipeScreen(_availableRecipes),
-        RecipeDetailScreen.routeName: (context) => RecipeDetailScreen(),
+        RecipeDetailScreen.routeName: (context) => RecipeDetailScreen(_toggleFavoriteRecipe, _isFavorite),
         FiltersScreen.routeName: (context) =>
             FiltersScreen(_filters, _updateFilters),
       },

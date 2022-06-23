@@ -4,10 +4,15 @@ import '../dummyData.dart';
 class RecipeDetailScreen extends StatelessWidget {
   static const routeName = '/RecipeDetailScreen';
 
+  final Function _toggleFavoriteRecipe;
+  final Function _isFavorite;
+
+  const RecipeDetailScreen(this._toggleFavoriteRecipe, this._isFavorite);
+
   @override
   Widget build(BuildContext context) {
     final route = ModalRoute.of(context);
-    if (route == null) return SizedBox.shrink();
+    if (route == null) return const SizedBox.shrink();
     final recipeID = route.settings.arguments as String;
     final selectedRecipe =
         dummyRecipes.firstWhere((recipe) => recipe.id == recipeID);
@@ -84,6 +89,12 @@ class RecipeDetailScreen extends StatelessWidget {
             ),
           ),
         ]),
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: _isFavorite(recipeID)
+            ? const Icon(Icons.favorite)
+            : const Icon(Icons.favorite_border),
+        onPressed: () => _toggleFavoriteRecipe(recipeID),
       ),
     );
   }
